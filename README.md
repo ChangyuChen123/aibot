@@ -21,7 +21,7 @@
 ### 進行commit儲存動作
 
 - git commit -am "commit log"
-- git remote -v
+
 
 ### 檢視目前commit歷程
 
@@ -30,7 +30,8 @@
 ### 綁定員端倉庫url
 
 - git add remot https://www.github.com/changyu123/xxxxxx
+- git remote -v
 
 ### 推送程式碼
-
--git push
+- git push -u origin master
+- git push
