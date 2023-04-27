@@ -21,6 +21,7 @@
 ### 進行commit儲存動作
 
 - git commit -am "commit log"
+- git remote -v
 
 ### 檢視目前commit歷程
 
