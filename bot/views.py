@@ -138,3 +138,25 @@ def callback(request):
 
 def index(request):
     return HttpResponse("AIBOT!")
+
+def lottery(request):
+    try:
+        url = 'https://www.taiwanlottery.com.tw/lotto/lotto649/history.aspx'
+        resp = requests.get(url)
+        soup = BeautifulSoup(resp.text, 'lxml')
+        trs = soup.find('table', class_="table_org td_hm").find_all('tr')
+        data1 = [td.text.strip() for td in trs[0].find_all('td')]
+        data2 = [td.text.strip() for td in trs[1].find_all('td')]
+        numbers = [td.text.strip() for td in trs[4].find_all('td')[1:]]
+        data = ''
+        for i in range(len(data1)):
+            # print(f'{data1[i]}:{data2[i]}')
+            data += f'{data1[i]}:{data2[i]}<br>'
+        data += ','.join(numbers[:-1])+'特別號:'+numbers[-1]
+        print(data)
+        return HttpResponse(data)
+    except Exception as e:
+        print(e)
+        return HttpResponse('取得大樂透號碼，請稍後再試...')
+        
+    
