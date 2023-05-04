@@ -139,7 +139,7 @@ def callback(request):
 def index(request):
     return HttpResponse("<h1>你好，我是AI機器人</h1>")
 
-def get_biglottery(request):
+def get_biglottery():
     try:
         url = 'https://www.taiwanlottery.com.tw/lotto/lotto649/history.aspx'
         resp = requests.get(url)
