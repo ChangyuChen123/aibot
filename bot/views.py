@@ -151,7 +151,7 @@ def get_biglottery(request):
         data = ''
         for i in range(len(data1)):
             # print(f'{data1[i]}:{data2[i]}')
-            data += f'{data1[i]}:{data2[i]}<br>'
+            data += f'{data1[i]}:{data2[i]}\n'
         data += ','.join(numbers[:-1])+'特別號:'+numbers[-1]
         print(data)
         return data
