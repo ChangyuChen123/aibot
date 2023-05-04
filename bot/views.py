@@ -139,7 +139,7 @@ def callback(request):
 def index(request):
     return HttpResponse("AIBOT!")
 
-def lottery(request):
+def get_biglottery(request):
     try:
         url = 'https://www.taiwanlottery.com.tw/lotto/lotto649/history.aspx'
         resp = requests.get(url)
@@ -154,9 +154,13 @@ def lottery(request):
             data += f'{data1[i]}:{data2[i]}<br>'
         data += ','.join(numbers[:-1])+'特別號:'+numbers[-1]
         print(data)
-        return HttpResponse(data)
+        return data
     except Exception as e:
         print(e)
-        return HttpResponse('取得大樂透號碼，請稍後再試...')
+        return '取得大樂透號碼，請稍後再試...'
+
+def lottery(request):
+    text = get_biglottery().replace('\n', '<br>')
+    return HttpResponse(f'<h1>{text}</h1>')
         
     
